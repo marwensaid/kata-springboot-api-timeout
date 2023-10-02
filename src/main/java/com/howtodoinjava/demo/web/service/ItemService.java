@@ -5,11 +5,9 @@ import com.howtodoinjava.demo.web.util.TimeoutUtils;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-@Service
+// TODO : declare a Service Class
 public class ItemService {
 
-  public List<Item> getAll() {
-    TimeoutUtils.busyOperation(10000);
-    return List.of(new Item(1L, "Item-1"), new Item(2L, "Item-2"));
-  }
+  //TODO : return all items using a long operation (or busy operation) : get result after 10s minimum
+
 }

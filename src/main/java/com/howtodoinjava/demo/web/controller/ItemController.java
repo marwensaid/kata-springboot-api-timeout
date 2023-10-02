@@ -11,36 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/items")
+//TODO : this class is a Rest Controller
+//TODO : the endpoint is "/items"
 @SuppressWarnings("all")
 public class ItemController {
 
   @Autowired
   ItemService itemService;
 
-  @GetMapping
-  public Callable<ResponseEntity<?>> getAll() {
+  //TODO : check http status code and return items and catch if server error : use GetMapping
 
-    return () -> {
-      try {
-        return ResponseEntity.ok(itemService.getAll());
-      } catch (Exception e) {
-        return ResponseEntity.status(HttpStatusCode.valueOf(500)).body(e.getMessage());
-      }
-    };
-  }
-
-  @GetMapping("timeLimiter")
-  @TimeLimiter(name = "itemService")
-  public CompletableFuture<ResponseEntity<?>> getAllWithTimeLimiter() {
-
-    return CompletableFuture.supplyAsync(() -> {
-      try {
-        return ResponseEntity.ok(itemService.getAll());
-      } catch (Exception e) {
-        return ResponseEntity.status(HttpStatusCode.valueOf(500)).body(e.getMessage());
-      }
-    });
-  }
 }
